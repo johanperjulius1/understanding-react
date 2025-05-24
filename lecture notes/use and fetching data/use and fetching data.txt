@@ -1,0 +1,35 @@
+use is not a hook. It can be used in loops and if statements.
+
+Use is recommended to use with a data fetching library.
+
+The use() hook is used to unwrap promises (and other resources) directly in components. 
+It's mainly designed for React Server Components (RSC), but it can be used in the client 
+in certain cases too (e.g., with suspense).
+
+✨ Key Use Cases:
+1. Unwrapping a promise directly in a component (server or suspense-enabled client):
+
+const data = use(fetchData());
+React will suspend the component until the promise resolves.
+
+No need for useEffect + useState boilerplate.
+
+2. Works with Promise, context, and resources:
+Can be used to unwrap:
+
+Promises
+
+Async context
+
+React resources (like cache())
+
+⚠️ Important Notes:
+It can only be used at the top level of a component (just like other hooks).
+
+It requires React to support Suspense boundaries or be in a server component.
+
+You should not use it inside event handlers or conditionals.
+
+Suspend waits on a promise.
+
+with use promises need to be cached, and react recommends using a library for that.

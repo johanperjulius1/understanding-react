@@ -1,0 +1,21 @@
+Fiber tree is a good place to store information that trees depend on, e.g. state.
+In React state is stored in hooks.
+
+A hook is like attaching something to the tree.
+A hook is attached to a particular fiber node.
+To reach the hook you need to be on the right node (branch)
+
+Hooks are connected to nodes, but they are not part of the tree.
+
+On a particular node state is stored in the property
+memoizedState.
+State will be a javascript object that we call a hook.
+A hook hold among other things a state and a queue.
+Notice a node has a memoized state, but the hook also has its own memoizedState.
+It also has a next property that points to another hook.
+
+On each fiber node has a updateQueue. Each hook has state and linkedlist of ques with fifo.
+With queues we can line up things that need to be  done at some point and then we can also flush
+the queue. Queues give react flexibility which can help react be performant.
+
+Hooks are state attached to each fiber node. And a linkedlist is one hook connected to another.

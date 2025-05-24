@@ -1,0 +1,19 @@
+useId is about accesible elements.
+
+the fieldset element represents a set of form controls 
+grouped together.
+
+you simply call the use id hook and store it in a
+variable. then use that variable as a prop on the
+elements you want to give an id.
+
+Key: useId is for the user agent to better identify things
+for user help tools like screen readers.
+
+Key is instead for react. More specifically to help
+react be as efficient as possible when deciding
+what the dom updates should be during the running
+of the reconciliation algorithm.
+
+Whenever we generate jsx in a loop a unique key prop
+is required.

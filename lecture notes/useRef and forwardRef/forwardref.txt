@@ -1,0 +1,11 @@
+Forward ref: when we want a parent component to be able to reference 
+a dom element in a child component. Passing a ref as a prop.
+
+You wrap the child component declaration, from inside the child component 
+inside React.forwardRef(child component declaration, nameOfref)
+
+So with the forward ref you use it in tandem with the useref in the parent.
+
+in react 19 the ability to add ref as a prop is added.  
+So then you dont need to wrap the child in a forward ref but you can
+just pass it as a prop as you normally would.

@@ -1,0 +1,3 @@
+use: remove .provider, its enough to just wrap the context
+
+enough to just use instead of useContext where the contextis used.

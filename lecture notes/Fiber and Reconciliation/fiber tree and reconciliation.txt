@@ -1,0 +1,29 @@
+Fiber tree is used to store state.
+Is a middle man between dom and element tree. 
+
+Is used to store information and determine what needs to be done.
+
+reconciliation = compare two items, find the differences between them and make them equal.
+
+tree reconciliation = comparing two trees and finding the steps needed to make them match.
+
+tree edit distance problem = what is the algorithm to find the smallest number of steps 
+to change one tree to make it look like the other.
+
+algorithm = a step by step procedure for solving a problem or computing something
+
+the fiber tree matches the current tree of the dom
+the react element tree is the developer telling react how we want the dom to appear
+
+if the element tree is a blueprint
+the element tree is like a small model of the house where we can test how to make the chamges
+in the most efficient way possible.
+
+the work in process branch however matches the latest element tree.
+
+reconciliation and work:
+react takes current tree and the work-in-progress-tree and applies a reconciliation algorithm.
+this decides out what steps to take on the real tree.
+
+
+Work in progress nodes: 

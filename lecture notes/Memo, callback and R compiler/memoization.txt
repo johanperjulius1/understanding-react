@@ -1,0 +1,16 @@
+react.memo to memoize components so they only rerender when props
+have actually changed. Recommended to only use in pure 
+functions that get their data from props, not context e.g.
+
+useMemo is like useEffect, it takes a value or a function that produces a value
+ it shall memoize, and a dependency array that holds something for when it shall rerender.
+
+useCallback: memoizing a function.
+
+function hello (){
+   return console.log("hello")
+}
+
+const memoizedValue = useMemo(hello, [])
+
+React.useCallback = wrap a function to memoize it across renders.

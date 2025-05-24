@@ -1,0 +1,25 @@
+strict mode in react is a node in the fiber tree.
+When react finds one, all of its descendants 
+all of its descendants will be considered in strict mode.
+
+you dont need to have the whole app in strict mode,
+you can make just certain components in strict.
+
+What really happens is that when reacts finds 
+the strict component it runs some extra code.
+
+the purpose of strict mode is about avoiding
+mistakes.
+
+two main purpose:
+1. extra rerender
+ it runs an extra rerender of each of its descendants
+ components. the purpose is to find functions that
+ arent pure.
+
+
+
+2. extra effect re run / cleaning up effects.
+Strict mode only runs in dev mode
+Extra effect rerun might help us find if we are
+missing a cleanup.

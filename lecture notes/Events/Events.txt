@@ -1,0 +1,34 @@
+DOM-events:
+its how the browser helps us deal with user input.
+With js I can set up events.
+The browser can listen for events.
+Then when events happen, a piece of code runs.
+
+We have: 
+event: click
+target: e.g. a button
+handler: onclick(), the code that runs when an event happens
+
+ Event bubbling: When an element is clicked, it also means that the parent
+ was clicked.
+ The opposite is called even capturing. Handling the event on the 
+ outermost element and then moving down through descendants.
+ Actually this happens - first its captured then when reaching
+ the clicked element bubbling happens.
+ Capturing is rarely used.
+
+ Propagation: Transmitting something in a certain direction through a medium.
+ In web dev we propagate through the dom tree. Both bubbling and capturing are
+ event propagation.
+
+ Event delegation: Assigning an event handler to an ancestor node in the tree.
+
+React has a syntethic event that it wraps around the dom event. The dom event capturing
+be found inside the syntetic event object and is named nativeEvent.
+
+Events and DOM updates are related through state.
+
+
+ suspense is a fallback node that lets me display a fallback until its children 
+ have completed loading. 
+ Only suspense enabled data sources will activate the suspense component.

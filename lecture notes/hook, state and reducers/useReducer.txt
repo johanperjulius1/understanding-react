@@ -1,0 +1,9 @@
+React provides hooks. Hooks are individual functions that will create a 
+hook and attach it to the fiber tree. And has a specific functionality.
+
+React has named all of its hook functions starting with the word "use".
+The most basic hook for managing state in react is useReducer.
+
+Dispatch: Sending the action to the reducer so it can update state.
+useReducer returns an array with two items: hook.memoizedState and
+dispatch.

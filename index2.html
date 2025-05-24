@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding React</title>
+  </head>
+  <body>
+    <main id="app"></main>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React Component with JSX -->
+    <script type="text/babel" data-type="module">
+      (async () => {
+        // Dynamic imports for React 19
+        const React = await import("https://esm.sh/react@19/?dev");
+        const ReactDOM = await import("https://esm.sh/react-dom@19/client?dev");
+
+        const { useState, useEffect } = React.default;
+        const { createRoot } = ReactDOM.default;
+
+        function App() {
+          return (
+            <>
+              <h1>Counters</h1>
+              <section>
+                <Counter name="One" />
+              </section>
+            </>
+          );
+        }
+
+        function Counter(props) {
+          const [state, dispatch] = React.useReducer(() => {}, { clicks: 0 });
+
+          return (
+            <article>
+              <h2>Counter {props.name}</h2>
+              <p>You clicked {state.clicks} times</p>
+              <button className="button">Click me</button>
+            </article>
+          );
+        }
+
+        const rootNode = document.getElementById("app");
+        const root = ReactDOM.createRoot(rootNode);
+        root.render(<App />);
+        console.log(App())
+      })();
+    </script>
+  </body>
+</html>

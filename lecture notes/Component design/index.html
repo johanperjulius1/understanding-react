@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding React</title>
+  </head>
+  <body>
+    <main id="app"></main>
+    <style>
+        body {
+            font-size: 24px;
+        }
+      button {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        font-size: 25px;
+      }
+    </style>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React Component with JSX -->
+    <script type="text/babel" data-type="module">
+      (async () => {
+        // Dynamic imports for React 19
+        const React = await import("https://esm.sh/react@19/?dev");
+        const ReactDOM = await import("https://esm.sh/react-dom@19/client?dev");
+
+        const { useState } = React.default;
+        const { createRoot } = ReactDOM.default;
+
+        // Instead of a separate app.js file, put all your app code here
+        // Note this isn't how you would do this in production, but useful for learning
+
+        function App() {
+          console.log("App is loaded");
+          return (
+            <>
+              <Counter name="One" />
+              <Counter name="Two" />
+            </>
+          );
+        }
+
+        function Counter({ name }) {
+          const [numOfClicks, setNumOfClicks] = useState(0);
+
+          const handleClick = (onClick) => {
+            setNumOfClicks(numOfClicks + 1);
+          };
+
+          return (
+            <section>
+              <h2>Counter {name}</h2>
+              <p>You clicked {numOfClicks} times</p>
+              <a>L'nk 1</a>
+              <a>L'nk 2</a>
+              <button onClick={handleClick}>Click me</button>
+            </section>
+          );
+        }
+
+        // Ensure DOM is ready, then render
+        const rootElement = document.getElementById("app");
+        const root = createRoot(rootElement);
+        root.render(<App />);
+      })();
+    </script>
+  </body>
+</html>

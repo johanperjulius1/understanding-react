@@ -1,0 +1,59 @@
+does label and htmlFor have any meaning?
+
+In HTML, the for attribute of the <label> tag should be equal to the id 
+of the related element to bind them together. However, because for is a 
+reserved word in JavaScript, React elements use htmlFor instead.
+
+Controlled inputs - state needed.
+
+When I set an inputs value with state only react can then update it, not the usual
+in the dom.
+
+For a group of inputs to be a form it needs to be marked as a form.
+With form comes a lot of browser functionality.
+
+wrap in form tags and add a method as tag attribute, usually with
+value submit. Also use onSubmit handler, often named handleSubmit.
+handleSubmit often starts with a preventDefault
+"default action on submit is to send a POST request to the server and refresh the page."
+
+When you call event.preventDefault() in the submit event handler, it stops this default behavior. 
+This is particularly useful in single page applications (like those built with React), 
+where you don't want a full page refresh to occur when a form is submitted.
+Instead, you might want to handle the form submission entirely with JavaScript, which 
+allows you to control what happens when the form is submitted, such as sending an 
+asynchronous request to the server and updating the state of your application based on 
+the response, all without causing a page refresh.
+
+
+Add button with type submit and the browser will know to submit
+the form that the button is a part of.
+
+When the button is clicked, browser functionality triggers a submit,
+but first it will run the onSubmit function.
+
+Form also needs name attribute. Suggestion is to give the name and
+id attributes of the input element and the htmlFor attribute of
+the label the same name.
+
+
+more notes:
+
+
+    // dont need to be controlled element to access
+    // the information. Browser dom code can be used.
+    // the target is the dom element.
+    // the browser comes with formData object.
+    // you give it a browser dom form element and gives back a data strucuture.
+    // in which see all the forms data.
+
+        const form = event.target;
+    // the browser comes with formData object.
+    // you give it a browser dom form element and gives back a data strucuture.
+    // in which see all the forms data.
+    const formData = new FormData(form);
+    console.log("hello from form", ...formData);
+
+    const formJson = Object.fromEntries(formData.entries());
+    console.log("hello from formJSon", formJson);
+  };

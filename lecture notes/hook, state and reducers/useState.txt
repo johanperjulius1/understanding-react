@@ -1,0 +1,17 @@
+useState is a specialised version of useReducer.-
+useState will call a reducer function with the argument as an action, but the state will be
+set equal to the value of the action.
+
+Immutable state...
+Two places where react needs to immutable:
+Props and state as used in useReducer and useState.
+
+React doesn't do shallow equality. It checks
+if state still refers to the same location in memory,
+so if you only mutate state and not replace it,
+react won't notice and rerender.
+
+Props and state are compared referentially.
+We don't change state, we create new copies and 
+store them at new locations in memory.
+This helps reacts diffchecking algorithm.

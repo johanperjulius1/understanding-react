@@ -1,0 +1,17 @@
+Fiber and execution contexts within reacts source code.
+
+NoContext
+BatchedContext
+RenderContext
+CommitContext
+
+What happens in react doesn't happen all at once, it can be batched and asynchronous.
+
+Units of work and the work loop:
+While work in progress takes a fiber an argument
+
+Memoization: storing the result of a computation so I don't have to redo it
+
+Lanes & priority:
+
+Lanes: There are many different. Lanes are how react prioritize work.

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding React</title>
+  </head>
+  <body>
+    <main id="app"></main>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React Component with JSX -->
+    <script type="text/babel" data-type="module">
+      (async () => {
+        // Dynamic imports for React 19
+        const React = await import("https://esm.sh/react@19/?dev");
+        const ReactDOM = await import("https://esm.sh/react-dom@19/client?dev");
+
+        const { useState } = React.default;
+        const { createRoot } = ReactDOM.default;
+        let counterName = "One";
+        // const { createElement } = React.default;
+
+        // Instead of a separate app.js file, put all your app code here
+        // Note this isn't how you would do this in production, but useful for learning
+        function App() {
+          return React.createElement(
+            "section",
+            null,
+            React.createElement("h1", null),
+            React.createElement(
+              "section",
+              null,
+              counterName === "One"
+                ? React.createElement(Counter, {
+                    name: "Counter 1",
+                    age: 20,
+                    lastName: "Johnson",
+                  })
+                : React.createElement(Counter2, {
+                    name: "Counter 2",
+                    age: 30,
+                    lastName: "Johnson",
+                  })
+            )
+          );
+        }
+
+        function Counter({ name, ...rest }) {
+          console.log("Counters props are: ", name, rest);
+          return React.createElement(
+            "article",
+            null,
+            React.createElement(
+              "h2",
+              null,
+              "Counter",
+              name,
+              JSON.stringify(rest)
+            ),
+            React.createElement("p", null, "You clicked one times"),
+            React.createElement(
+              "button",
+              {
+                style: {
+                  backgroundColor: "blue",
+                  color: "white",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                },
+                onClick: update,
+              },
+              "Click me"
+            )
+          );
+        }
+
+        function Counter2({ name, ...rest }) {
+          console.log("Counters props are: ", name, rest);
+          return React.createElement(
+            "article",
+            null,
+            React.createElement(
+              "h2",
+              null,
+              "Counter",
+              name,
+              JSON.stringify(rest)
+            ),
+            React.createElement("p", null, "times you clicked: "),
+            React.createElement(
+              "button",
+              {
+                style: {
+                  backgroundColor: "blue",
+                  color: "white",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                },
+                onClick: update,
+              },
+              "Click me"
+            )
+          );
+        }
+
+        function update (){
+          // grab 
+          // when counterName changes rerender shall be called
+          counterName = "Two"
+          root.render(React.createElement(App))
+        }
+        // Ensure DOM is ready, then render
+        console.log(App());
+        const rootElement = document.getElementById("app");
+        const root = createRoot(rootElement);
+        root.render(<App />);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+useRef - data not rendered. Is for storing data, like useState, but not triggering a rerender.
+Like all hooks, useRef means there is going to be an object attached to a fibertree node.
+
+useref does not return a value and a function, it returns an object.
+
+that object has a current property. The value will be what ever you pass to useRef function call.
+
+useref and the dom:
+the most common useCase:
+
+buttonRef will store a value to the real actual dom node which is not usually the
+case in react with the virtual dom.
+
+you can use it inside a useffect, and add actual dom events. SO when the component
+ is finished rendering useffect runs
+
+ only use useref when you can't figure out how to do something declaratively in react.
+ The most common usecase seems to be focusing focusing a button or input field,
+ after a certain event, after a statechange or after mount?
+ Another example is scrolling

@@ -1,0 +1,15 @@
+start with createContext.
+context is just an object returned from createContext.
+
+that object has a current value, a Consumer and a Provider.
+
+the way to put state in the fiber tree is with NameOfContext.Provider passing it a value.
+The state is then available to any of its descendants.
+
+The way to use it is with a hook. You call useContext(NameOfContext).
+
+Propagation stops if there is another provider further down in the tree.
+
+use accepts a promise or calls readContext
+Now when we wrap applications we don't need to use NameOfContext.Provider
+just NameOfContext is enough. And instead of useContext we do just use

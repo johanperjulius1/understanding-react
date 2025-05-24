@@ -1,0 +1,35 @@
+State machines:
+State: In the context of software, the data at any given time in the current state
+or condition of the system.
+
+Finite state Machines: 
+A model of a process that can be in a limited number of states.
+It models the states, the inputs, and the transition between the states 
+in response to the inputs. Think of a stoplight.
+
+Deterministic: A predictable process that, in the context of a state
+machine, always result in the same outcome if given the same inputs 
+and state.
+
+State machines depend on pure functions to be deterministic.
+
+UI: a function of state. State in, ui out.
+
+State machines need to be deterministic, finite and reliable.
+This goes for components. 
+
+The results of state is a tree. An element tree that
+defines the user interface.
+
+State => Components => tree => Ui should be deterministic.
+
+Reducers: 
+Come from functional programming. Functional programming is a style of
+programming where all the code is organized into pure functions.
+React borrows a lot of concepts from functional programming.
+Reducers is a functional concept  implemented into JS itself.
+
+Actions:
+React has embedded actions in itself.
+An action is a description of what has occured in an app
+and how state changes as a result.

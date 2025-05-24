@@ -1,0 +1,7 @@
+Custom hooks is a concept that works because of how the react
+fiber tree works and how react rendering works.
+
+Extracting custom hooks - reusable hook logic.
+
+You can't have hooks in conditionals, but you can have 
+conditionals inside hooks.

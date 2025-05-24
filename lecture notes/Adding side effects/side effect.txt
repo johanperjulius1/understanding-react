@@ -1,0 +1,11 @@
+Sometimes we need side effects in code - we need functions to be 
+able to changes things outside of itself.
+
+The issue isn't really side effects, rather when the side
+effects happen.
+
+react is smart enough so that useEffect only runs after the
+component has rendered / after react has finished every thing
+else.
+
+Hooks are objects attached to fiber nodes.
