@@ -1,0 +1,8 @@
+.game {
+  display: flex;
+}
+
+.game-section {
+  display: flex;
+  margin: 0 auto;
+}

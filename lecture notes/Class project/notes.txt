@@ -1,0 +1,5 @@
+Great question!
+For a spelling bee app, the point score is a perfect candidate for state because:
+- It changes over time (increases as the user spells words correctly).
+- It affects the UI (you need to display the score and possibly update it in real-time).
+- It is derived from user input (the words the user spells).
