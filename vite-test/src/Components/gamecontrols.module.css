@@ -1,25 +1,32 @@
 .hex-button {
-    align-items: center;
-    background: #f0f0f0;
-    border: none;
-    color: #222;
-    clip-path: polygon(
-      25% 6%, 75% 6%, 
-      100% 50%, 75% 94%, 
-      25% 94%, 0% 50%
-    );
-    cursor: pointer;
-    display: flex;
-    font-size: 2rem;
-    font-weight: bold;
-    height: 80px;
-    justify-content: center;
-    margin: 8px;
-    outline: none;
-    transition: background 0.2s;
-    width: 80px;
-  }
-  
-  .hex-button.center {
-    background: #ffe14b; /* yellow for center */
-  }
+  align-items: center;
+  background: #f0f0f0;
+  border: none;
+  color: #222;
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+  cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 80px;
+  justify-content: center;
+  margin: 8px;
+  outline: none;
+  transition: background 0.2s;
+  width: 80px;
+}
+
+.hex-button.center {
+  background: #ffe14b; /* yellow for center */
+}
+
+.hive {
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}

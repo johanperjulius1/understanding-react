@@ -18,24 +18,18 @@ export default function GameControls() {
           placeholder="Type or click"
         />
       </form>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className={styles["hive"]}>
+        <div className={styles["button-container"]}>
           <button className={styles["hex-button"]}>Y</button>
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className={styles["button-container"]}>
           <button className={styles["hex-button"]}>D</button>
           <button className={`${styles["hex-button"]} ${styles["center"]}`}>
             C
           </button>
           <button className={styles["hex-button"]}>A</button>
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className={styles["button-container"]}>
           <button className={styles["hex-button"]}>R</button>
           <button className={styles["hex-button"]}>U</button>
           <button className={styles["hex-button"]}>H</button>
