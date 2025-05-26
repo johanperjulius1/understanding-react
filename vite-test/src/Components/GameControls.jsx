@@ -10,14 +10,6 @@ export default function GameControls() {
 
   return (
     <section>
-      <form method="post">
-        <input
-          type="text"
-          value={userInput}
-          onChange={handleUserInput}
-          placeholder="Type or click"
-        />
-      </form>
       <div className={styles["hive"]}>
         <div className={styles["button-container"]}>
           <button className={styles["hex-button"]}>Y</button>
@@ -35,6 +27,25 @@ export default function GameControls() {
           <button className={styles["hex-button"]}>H</button>
         </div>
       </div>
+      <form method="post">
+        <input
+          type="text"
+          value={userInput}
+          onChange={handleUserInput}
+          placeholder="Type or click"
+        />
+      </form>
+      <ActionButtons />
     </section>
+  );
+}
+
+function ActionButtons() {
+  return (
+    <div>
+      <button>Shuffle</button>
+      <button>Delete</button>
+      <button>Enter</button>
+    </div>
   );
 }
