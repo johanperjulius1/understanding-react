@@ -1,0 +1,25 @@
+.hex-button {
+    width: 80px;
+    height: 80px;
+    background: #f0f0f0;
+    color: #222;
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 8px;
+    clip-path: polygon(
+      25% 6%, 75% 6%, 
+      100% 50%, 75% 94%, 
+      25% 94%, 0% 50%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  
+  .hex-button.center {
+    background: #ffe14b; /* yellow for center */
+  }
