@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./gamecontrols.module.css";
+import styles from "./game-controls.module.css";
 
 export default function GameControls() {
   const [userInput, setUserInput] = useState("");
