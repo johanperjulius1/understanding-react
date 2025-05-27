@@ -6,11 +6,11 @@ export default function PointSection() {
     <aside className={styles["points-container"]}>
       <div className={styles["progress-container"]}>
         <div className={`${styles.circle} ${styles.one} ${styles.active}`}>
-          1
+          
         </div>
-        <div className={`${styles.circle} ${styles.two}`}>2</div>
-        <div className={`${styles.circle} ${styles.three}`}>3</div>
-        <div className={`${styles.circle} ${styles.four}`}>4</div>
+        <div className={`${styles.circle} ${styles.two}`}></div>
+        <div className={`${styles.circle} ${styles.three}`}></div>
+        <div className={`${styles.circle} ${styles.four}`}></div>
       </div>
     </aside>
   );

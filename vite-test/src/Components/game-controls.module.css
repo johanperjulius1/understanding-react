@@ -1,3 +1,10 @@
+.game-controls {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .hex-button {
   align-items: center;
   background: #f0f0f0;

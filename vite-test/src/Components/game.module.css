@@ -4,5 +4,8 @@
 
 .game-section {
   display: flex;
+  height: 65vh;
   margin: 0 auto;
+  justify-content: space-around;
+  width: 1000px;
 }

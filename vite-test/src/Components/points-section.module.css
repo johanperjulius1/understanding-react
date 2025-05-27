@@ -1,3 +1,7 @@
+.points-container {
+    
+}
+
 .progress-container {
   display: flex;
   flex-direction: row;
@@ -26,9 +30,9 @@
   border: 2px solid #bbb;
   background-color: #e0e0e0;
   display: flex;
-  height: 25px;
+  height: 10px;
   justify-content: center;
   transition: 0.4s ease;
-  width: 25px;
+  width: 10px;
   z-index: 1;
 }

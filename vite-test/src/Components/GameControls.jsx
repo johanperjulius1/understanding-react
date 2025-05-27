@@ -9,7 +9,7 @@ export default function GameControls() {
   };
 
   return (
-    <section>
+    <section className={styles["game-controls"]}>
       <div className={styles["hive"]}>
         <div className={styles["button-container"]}>
           <button className={styles["hex-button"]}>Y</button>
