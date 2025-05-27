@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./game-controls.module.css";
 
 export default function GameControls() {
   const [userInput, setUserInput] = useState("");
-
+  const [letters, setLetters] = useState("");
+  
   const handleUserInput = (event) => {
     setUserInput(event.target.value);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/data.json");
+      const data = await response.json();
+      console.log("Actual data:", data);
+      setLetters(data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section className={styles["game-controls"]}>
@@ -43,8 +55,8 @@ export default function GameControls() {
 function ActionButtons() {
   return (
     <div>
-      <button>Shuffle</button>
       <button>Delete</button>
+      <button>Shuffle</button>
       <button>Enter</button>
     </div>
   );
