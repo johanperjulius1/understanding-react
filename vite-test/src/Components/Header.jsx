@@ -1,11 +1,11 @@
 import styles from "./header.module.css";
 
-export default function Header() {
+export default function Header({ date, editor }) {
   return (
     <header className={styles.header}>
       <h1>Spelling Bee</h1>
-      <p>May 24, 2025</p>
-      <p>Edited by Sam Ezersky</p>
+      <p>{date}</p>
+      <p>Edited by {editor}</p>
 
       <nav className={styles.nav}>
         <ul className={styles["nav-list"]}>
