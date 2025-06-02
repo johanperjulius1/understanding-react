@@ -1,30 +1,36 @@
 import { useState } from "react";
+import { useGame } from "../hooks/useGame.js";
 import styles from "./game-controls.module.css";
 
 export default function GameControls() {
   const [userInput, setUserInput] = useState("");
+  const { todaysGame, loading } = useGame();
 
   const handleUserInput = (event) => {
     setUserInput(event.target.value);
   };
 
+  if (loading || !todaysGame) return <div>Loading...</div>;
+
+  const { centerLetter, outerLetters } = todaysGame;
+
   return (
     <section className={styles["game-controls"]}>
       <div className={styles["hive"]}>
         <div className={styles["button-container"]}>
-          <button className={styles["hex-button"]}>Y</button>
+          <button className={styles["hex-button"]}>{outerLetters[0]}</button>
         </div>
         <div className={styles["button-container"]}>
-          <button className={styles["hex-button"]}>D</button>
+          <button className={styles["hex-button"]}>{outerLetters[1]}</button>
           <button className={`${styles["hex-button"]} ${styles["center"]}`}>
-            C
+            {centerLetter}
           </button>
-          <button className={styles["hex-button"]}>A</button>
+          <button className={styles["hex-button"]}>{outerLetters[2]}</button>
         </div>
         <div className={styles["button-container"]}>
-          <button className={styles["hex-button"]}>R</button>
-          <button className={styles["hex-button"]}>U</button>
-          <button className={styles["hex-button"]}>H</button>
+          <button className={styles["hex-button"]}>{outerLetters[3]}</button>
+          <button className={styles["hex-button"]}>{outerLetters[4]}</button>
+          <button className={styles["hex-button"]}>{outerLetters[5]}</button>
         </div>
       </div>
       <form method="post">

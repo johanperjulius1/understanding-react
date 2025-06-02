@@ -6,8 +6,8 @@ export default function Game() {
   return (
     <main className={styles.game}>
       <section className={styles["game-section"]}>
-        <GameControls></GameControls>
-        <PointSection></PointSection>
+        <GameControls />
+        <PointSection />
       </section>
     </main>
   );
