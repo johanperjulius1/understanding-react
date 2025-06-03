@@ -5,6 +5,40 @@
   flex-direction: column;
 }
 
+.button-one {
+  position: relative;
+  top: 10px;
+}
+
+.button-two {
+  bottom: 34px;
+  left: 21px;
+  position: relative;
+}
+
+.button-three {
+  bottom: 34px;
+  right: 21px;
+  position: relative;
+}
+
+.button-four {
+  bottom: 45px;
+  left: 21px;
+  position: relative;
+}
+
+.button-five {
+  position: relative;
+  bottom: 10px;
+}
+
+.button-six {
+  bottom: 45px;
+  right: 21px;
+  position: relative;
+}
+
 .hex-button {
   align-items: center;
   background: #f0f0f0;
@@ -17,7 +51,7 @@
   font-weight: bold;
   height: 80px;
   justify-content: center;
-  margin: 8px;
+  /* margin: 8px; */
   outline: none;
   transition: background 0.2s;
   width: 80px;

@@ -18,19 +18,37 @@ export default function GameControls() {
     <section className={styles["game-controls"]}>
       <div className={styles["hive"]}>
         <div className={styles["button-container"]}>
-          <button className={styles["hex-button"]}>{outerLetters[0]}</button>
+          <button className={`${styles["hex-button"]} ${styles["button-one"]}`}>
+            {outerLetters[0]}
+          </button>
         </div>
         <div className={styles["button-container"]}>
-          <button className={styles["hex-button"]}>{outerLetters[1]}</button>
+          <button className={`${styles["hex-button"]} ${styles["button-two"]}`}>
+            {outerLetters[1]}
+          </button>
           <button className={`${styles["hex-button"]} ${styles["center"]}`}>
             {centerLetter}
           </button>
-          <button className={styles["hex-button"]}>{outerLetters[2]}</button>
+          <button
+            className={`${styles["hex-button"]} ${styles["button-three"]}`}
+          >
+            {outerLetters[2]}
+          </button>
         </div>
         <div className={styles["button-container"]}>
-          <button className={styles["hex-button"]}>{outerLetters[3]}</button>
-          <button className={styles["hex-button"]}>{outerLetters[4]}</button>
-          <button className={styles["hex-button"]}>{outerLetters[5]}</button>
+          <button
+            className={`${styles["hex-button"]} ${styles["button-four"]}`}
+          >
+            {outerLetters[3]}
+          </button>
+          <button
+            className={`${styles["hex-button"]} ${styles["button-five"]}`}
+          >
+            {outerLetters[4]}
+          </button>
+          <button className={`${styles["hex-button"]} ${styles["button-six"]}`}>
+            {outerLetters[5]}
+          </button>
         </div>
       </div>
       <form method="post">
