@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGame } from "../hooks/useGame.js";
 import styles from "./game-controls.module.css";
 
 export default function GameControls() {
   const [userInput, setUserInput] = useState("");
+  const [shuffledOuterLetters, setShuffledOuterLetters] = useState([]);
   const { todaysGame, loading } = useGame();
+
+  // Initialize shuffled letters when game data loads
+  useEffect(() => {
+    if (todaysGame?.outerLetters) {
+      setShuffledOuterLetters([...todaysGame.outerLetters]);
+    }
+  }, [todaysGame]);
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
@@ -14,9 +22,22 @@ export default function GameControls() {
     setUserInput((prev) => prev + event.target.textContent);
   };
 
+  const shuffleLetters = () => {
+    const shuffled = [...shuffledOuterLetters];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setShuffledOuterLetters(shuffled);
+  };
+
+  const deleteLastLetter = () => {
+    setUserInput((prev) => prev.slice(0, -1));
+  };
+
   if (loading || !todaysGame) return <div>Loading...</div>;
 
-  const { centerLetter, outerLetters } = todaysGame;
+  const { centerLetter } = todaysGame;
 
   return (
     <section className={styles["game-controls"]}>
@@ -26,7 +47,7 @@ export default function GameControls() {
             onClick={handleButtonClick}
             className={`${styles["hex-button"]} ${styles["button-one"]}`}
           >
-            {outerLetters[0]}
+            {shuffledOuterLetters[0]}
           </button>
         </div>
         <div className={styles["button-container"]}>
@@ -34,7 +55,7 @@ export default function GameControls() {
             onClick={handleButtonClick}
             className={`${styles["hex-button"]} ${styles["button-two"]}`}
           >
-            {outerLetters[1]}
+            {shuffledOuterLetters[1]}
           </button>
           <button
             onClick={handleButtonClick}
@@ -46,7 +67,7 @@ export default function GameControls() {
             onClick={handleButtonClick}
             className={`${styles["hex-button"]} ${styles["button-three"]}`}
           >
-            {outerLetters[2]}
+            {shuffledOuterLetters[2]}
           </button>
         </div>
         <div className={styles["button-container"]}>
@@ -54,19 +75,19 @@ export default function GameControls() {
             onClick={handleButtonClick}
             className={`${styles["hex-button"]} ${styles["button-four"]}`}
           >
-            {outerLetters[3]}
+            {shuffledOuterLetters[3]}
           </button>
           <button
             onClick={handleButtonClick}
             className={`${styles["hex-button"]} ${styles["button-five"]}`}
           >
-            {outerLetters[4]}
+            {shuffledOuterLetters[4]}
           </button>
           <button
             onClick={handleButtonClick}
             className={`${styles["hex-button"]} ${styles["button-six"]}`}
           >
-            {outerLetters[5]}
+            {shuffledOuterLetters[5]}
           </button>
         </div>
       </div>
@@ -78,16 +99,16 @@ export default function GameControls() {
           placeholder="Type or click"
         />
       </form>
-      <ActionButtons />
+      <ActionButtons onShuffle={shuffleLetters} onDelete={deleteLastLetter} />
     </section>
   );
 }
 
-function ActionButtons() {
+function ActionButtons({ onShuffle, onDelete }) {
   return (
     <div>
-      <button>Delete</button>
-      <button>Shuffle</button>
+      <button onClick={onDelete}>Delete</button>
+      <button onClick={onShuffle}>Shuffle</button>
       <button>Enter</button>
     </div>
   );
