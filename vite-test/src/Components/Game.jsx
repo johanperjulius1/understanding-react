@@ -1,4 +1,4 @@
-import GameControls from "./GameControls";
+import GameControls from "./GameControls/GameControls";
 import PointSection from "./PointSection";
 import styles from "./game.module.css";
 
