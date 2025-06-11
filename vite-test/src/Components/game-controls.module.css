@@ -70,3 +70,19 @@
   display: flex;
   justify-content: center;
 }
+
+.action-buttons-container {
+}
+
+.action-button {
+  background-color: transparent;
+  border-radius: 20%;
+  margin: 5px;
+  padding: 20px 10px;
+}
+
+.input {
+  font-size: 30px;
+  height: 50px;
+  width: 190px;
+}

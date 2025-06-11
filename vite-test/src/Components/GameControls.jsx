@@ -93,6 +93,7 @@ export default function GameControls() {
       </div>
       <form method="post">
         <input
+          className={styles.input}
           type="text"
           value={userInput}
           onChange={handleInputChange}
@@ -106,10 +107,14 @@ export default function GameControls() {
 
 function ActionButtons({ onShuffle, onDelete }) {
   return (
-    <div>
-      <button onClick={onDelete}>Delete</button>
-      <button onClick={onShuffle}>Shuffle</button>
-      <button>Enter</button>
+    <div className={styles["action-buttons-container"]}>
+      <button className={styles["action-button"]} onClick={onDelete}>
+        Delete
+      </button>
+      <button className={styles["action-button"]} onClick={onShuffle}>
+        Shuffle
+      </button>
+      <button className={styles["action-button"]}>Enter</button>
     </div>
   );
 }
