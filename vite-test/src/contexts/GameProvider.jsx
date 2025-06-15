@@ -4,7 +4,6 @@ import { GameContext } from "./GameContext.js";
 export function GameProvider({ children }) {
   const [todaysGame, setTodaysGame] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,40 +25,8 @@ export function GameProvider({ children }) {
     fetchData();
   }, []);
 
-  const submitWord = async (word) => {
-    setSubmitting(true);
-    try {
-      const response = await fetch("/api/submit-word", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          word: word,
-          gameId: todaysGame?.id,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit word");
-      }
-
-      const result = await response.json();
-      console.log("Word submitted successfully:", result);
-      return result;
-    } catch (error) {
-      console.error("Failed to submit word:", error);
-      throw error;
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   return (
-    <GameContext.Provider
-      value={{ todaysGame, loading, submitWord, submitting }}
-    >
+    <GameContext.Provider value={{ todaysGame, loading }}>
       {children}
     </GameContext.Provider>
   );

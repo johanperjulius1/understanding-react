@@ -3,6 +3,7 @@ import { useGame } from "../../hooks/useGame.js";
 import { HexButtons } from "./HexButtons.jsx";
 import { ActionButtons } from "./ActionButtons.jsx";
 import styles from "./game-controls.module.css";
+import { WordInputForm } from "./WordInputForm.jsx";
 
 export default function GameControls() {
   const [userInput, setUserInput] = useState("");
@@ -25,31 +26,22 @@ export default function GameControls() {
     }
   }, [todaysGame]);
 
-  const handleInputChange = (event) => {
-    setUserInput(event.target.value);
-  };
-
   if (loading || !todaysGame) return <div>Loading...</div>;
 
   // const { answers } = todaysGame;
 
   return (
     <section className={styles["game-controls"]}>
+      <WordInputForm userInput={userInput} setUserInput={setUserInput} />
       <HexButtons
         shuffledOuterLetters={shuffledOuterLetters}
         setShuffledOuterLetters={setShuffledOuterLetters}
         setUserInput={setUserInput}
       />
-      <form method="post">
-        <input
-          className={styles.input}
-          type="text"
-          value={userInput}
-          onChange={handleInputChange}
-          placeholder="Type or click"
-        />
-      </form>
-      <ActionButtons onShuffle={shuffleLetters} setUserInput={setUserInput} />
+      <ActionButtons
+        onShuffle={shuffleLetters}
+        setUserInput={setUserInput}
+      />
     </section>
   );
 }
