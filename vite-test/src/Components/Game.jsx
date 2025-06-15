@@ -1,5 +1,5 @@
 import GameControls from "./GameControls/GameControls";
-import PointSection from "./PointSection";
+import PointSection from "./PointSection/PointSection";
 import styles from "./game.module.css";
 
 export default function Game() {

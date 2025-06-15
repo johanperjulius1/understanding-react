@@ -19,7 +19,6 @@ export default function GameControls() {
     setShuffledOuterLetters(shuffled);
   };
 
-  // Initialize shuffled letters when game data loads
   useEffect(() => {
     if (todaysGame?.outerLetters) {
       setShuffledOuterLetters([...todaysGame.outerLetters]);
