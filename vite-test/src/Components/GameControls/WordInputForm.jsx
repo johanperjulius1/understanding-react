@@ -1,6 +1,6 @@
 import styles from "./inputForm.module.css";
 
-export function WordInputForm({ userInput, setUserInput, hasErrors, errorMessage }) {
+export function WordInputForm({ userInput, setUserInput, hasErrors, errorMessage, submitHandler }) {
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
@@ -10,9 +10,9 @@ export function WordInputForm({ userInput, setUserInput, hasErrors, errorMessage
     const inputClassName = [styles.input, hasErrors && styles["error"]]
     .filter(Boolean)
     .join(" ");
-    
+
   return (
-    <form method="post">
+    <form method="post" onSubmit={submitHandler}>
       <input
         className={inputClassName}
         type="text"

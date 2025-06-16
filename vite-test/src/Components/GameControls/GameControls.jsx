@@ -9,7 +9,7 @@ export default function GameControls() {
   const [userInput, setUserInput] = useState("");
   const [shuffledOuterLetters, setShuffledOuterLetters] = useState([]);
   const { todaysGame, loading } = useGame();
-  const { validLetters, centerLetter} = todaysGame;
+  const { validLetters, centerLetter } = todaysGame;
 
   const shuffleLetters = () => {
     const shuffled = [...shuffledOuterLetters];
@@ -44,6 +44,11 @@ export default function GameControls() {
   // Combined validation
   const hasErrors = isTooShort || hasInvalidLetters || missingCenterLetter;
 
+  // Submit handler
+  const submitHandler = (event) => {
+    event.preventDefault();
+  };
+
   // Error messages
   const getErrorMessage = () => {
     if (isTooShort) return "Word must be at least 4 letters";
@@ -62,14 +67,19 @@ export default function GameControls() {
         setUserInput={setUserInput}
         hasErrors={hasErrors}
         errorMessage={hasErrors && getErrorMessage()}
-      >
-      </WordInputForm>
+        submitHandler={submitHandler}
+      ></WordInputForm>
       <HexButtons
         shuffledOuterLetters={shuffledOuterLetters}
         setShuffledOuterLetters={setShuffledOuterLetters}
         setUserInput={setUserInput}
       />
-      <ActionButtons hasErrors={hasErrors} onShuffle={shuffleLetters} setUserInput={setUserInput} />
+      <ActionButtons
+        hasErrors={hasErrors}
+        onShuffle={shuffleLetters}
+        userInput={userInput}
+        setUserInput={setUserInput}
+      />
     </section>
   );
 }
