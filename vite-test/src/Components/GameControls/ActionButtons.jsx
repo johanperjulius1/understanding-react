@@ -1,6 +1,6 @@
 import styles from "./game-controls.module.css";
 
-export function ActionButtons({ onShuffle, setUserInput }) {
+export function ActionButtons({ onShuffle, setUserInput, hasErrors }) {
   const deleteLastLetter = () => {
     setUserInput((prev) => prev.slice(0, -1));
   };
@@ -12,7 +12,7 @@ export function ActionButtons({ onShuffle, setUserInput }) {
       <button className={styles["action-button"]} onClick={onShuffle}>
         Shuffle
       </button>
-      <button className={styles["action-button"]}>Enter</button>
+      <button className={styles["action-button"]} disabled={hasErrors}>Enter</button>
     </div>
   );
 }

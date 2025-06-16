@@ -9,6 +9,7 @@ export default function GameControls() {
   const [userInput, setUserInput] = useState("");
   const [shuffledOuterLetters, setShuffledOuterLetters] = useState([]);
   const { todaysGame, loading } = useGame();
+  const { validLetters, centerLetter} = todaysGame;
 
   const shuffleLetters = () => {
     const shuffled = [...shuffledOuterLetters];
@@ -27,20 +28,48 @@ export default function GameControls() {
 
   if (loading || !todaysGame) return <div>Loading...</div>;
 
+  // Validation
+  const isTooShort = userInput.length > 0 && userInput.length < 4;
+
+  const hasInvalidLetters = userInput
+    .toLowerCase()
+    .split("")
+    .some((letter) => !validLetters.includes(letter));
+
+  const hasCenterLetter = userInput
+    .toLowerCase()
+    .includes(centerLetter.toLowerCase());
+  const missingCenterLetter = userInput.length > 0 && !hasCenterLetter;
+
+  // Combined validation
+  const hasErrors = isTooShort || hasInvalidLetters || missingCenterLetter;
+
+  // Error messages
+  const getErrorMessage = () => {
+    if (isTooShort) return "Word must be at least 4 letters";
+    if (hasInvalidLetters) return "Word contains invalid letters";
+    if (missingCenterLetter)
+      return `Word must contain the center letter "${centerLetter}"`;
+    return null;
+  };
+
   // const { answers } = todaysGame;
 
   return (
     <section className={styles["game-controls"]}>
-      <WordInputForm userInput={userInput} setUserInput={setUserInput} />
+      <WordInputForm
+        userInput={userInput}
+        setUserInput={setUserInput}
+        hasErrors={hasErrors}
+        errorMessage={hasErrors && getErrorMessage()}
+      >
+      </WordInputForm>
       <HexButtons
         shuffledOuterLetters={shuffledOuterLetters}
         setShuffledOuterLetters={setShuffledOuterLetters}
         setUserInput={setUserInput}
       />
-      <ActionButtons
-        onShuffle={shuffleLetters}
-        setUserInput={setUserInput}
-      />
+      <ActionButtons hasErrors={hasErrors} onShuffle={shuffleLetters} setUserInput={setUserInput} />
     </section>
   );
 }
