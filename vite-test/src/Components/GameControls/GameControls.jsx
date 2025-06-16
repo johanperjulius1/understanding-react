@@ -8,8 +8,9 @@ import { WordInputForm } from "./WordInputForm.jsx";
 export default function GameControls() {
   const [userInput, setUserInput] = useState("");
   const [shuffledOuterLetters, setShuffledOuterLetters] = useState([]);
+  const [message, setMessage] = useState("");
   const { todaysGame, loading } = useGame();
-  const { validLetters, centerLetter } = todaysGame;
+  const { validLetters, centerLetter, answers } = todaysGame;
 
   const shuffleLetters = () => {
     const shuffled = [...shuffledOuterLetters];
@@ -44,11 +45,6 @@ export default function GameControls() {
   // Combined validation
   const hasErrors = isTooShort || hasInvalidLetters || missingCenterLetter;
 
-  // Submit handler
-  const submitHandler = (event) => {
-    event.preventDefault();
-  };
-
   // Error messages
   const getErrorMessage = () => {
     if (isTooShort) return "Word must be at least 4 letters";
@@ -58,11 +54,23 @@ export default function GameControls() {
     return null;
   };
 
-  // const { answers } = todaysGame;
+  // Submit handler
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (hasErrors) return; // Don't submit if there are validation errors
+    if (answers.includes(userInput.toLowerCase())) {
+      setMessage("Correct! Well done!");
+      setUserInput(""); // Clear on success
+    } else {
+      setMessage("Not in word list");
+    }
+  };
 
   return (
     <section className={styles["game-controls"]}>
+      {message && <p>{message}</p>}
       <WordInputForm
+        setMessage={setMessage}
         userInput={userInput}
         setUserInput={setUserInput}
         hasErrors={hasErrors}
