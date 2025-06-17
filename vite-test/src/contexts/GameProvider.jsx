@@ -38,7 +38,7 @@ export function GameProvider({ children }) {
         todaysGame,
         loading,
         foundWords,
-        setFoundWords,
+        addFoundWord,
         score,
         setScore,
       }}
