@@ -4,6 +4,13 @@ import { GameContext } from "./GameContext.js";
 export function GameProvider({ children }) {
   const [todaysGame, setTodaysGame] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [foundWords, setFoundWords] = useState([]);
+  const [score, setScore] = useState(0);
+
+  const addFoundWord = (word) => {
+    setFoundWords((prev) => [...prev, word]);
+    // Calculate and update score
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +33,16 @@ export function GameProvider({ children }) {
   }, []);
 
   return (
-    <GameContext.Provider value={{ todaysGame, loading }}>
+    <GameContext.Provider
+      value={{
+        todaysGame,
+        loading,
+        foundWords,
+        setFoundWords,
+        score,
+        setScore,
+      }}
+    >
       {children}
     </GameContext.Provider>
   );

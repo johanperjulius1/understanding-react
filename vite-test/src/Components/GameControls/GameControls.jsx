@@ -9,7 +9,7 @@ export default function GameControls() {
   const [userInput, setUserInput] = useState("");
   const [shuffledOuterLetters, setShuffledOuterLetters] = useState([]);
   const [message, setMessage] = useState("");
-  const { todaysGame, loading } = useGame();
+  const { todaysGame, loading, foundWords, setFoundWords } = useGame();
   const { validLetters, centerLetter, answers } = todaysGame;
 
   const shuffleLetters = () => {
@@ -58,9 +58,15 @@ export default function GameControls() {
   const submitHandler = (event) => {
     event.preventDefault();
     if (hasErrors) return; // Don't submit if there are validation errors
-    if (answers.includes(userInput.toLowerCase())) {
+    if (
+      answers.includes(userInput.toLowerCase()) &&
+      !foundWords.includes(userInput)
+    ) {
+      setFoundWords((prev) => [...prev, userInput.toLowerCase()]);
       setMessage("Correct! Well done!");
       setUserInput(""); // Clear on success
+    } else if (foundWords.includes(userInput)) {
+      setMessage("Word already found");
     } else {
       setMessage("Not in word list");
     }
