@@ -57,13 +57,12 @@ export default function GameControls() {
   // Submit handler
   const submitHandler = (event) => {
     event.preventDefault();
-    if (hasErrors) return; // Don't submit if there are validation errors
+    if (hasErrors) return;
     if (foundWords.includes(userInput.toLowerCase())) {
       setMessage("Word already found");
     } else if (!answers.includes(userInput.toLowerCase())) {
       setMessage("Not in word list");
     } else {
-      // Success case - word is in answers and not already found
       addFoundWord(userInput.toLowerCase());
       setMessage("Correct! Well done!");
       setUserInput(""); // Clear on success

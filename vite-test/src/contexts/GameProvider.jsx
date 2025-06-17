@@ -7,9 +7,19 @@ export function GameProvider({ children }) {
   const [foundWords, setFoundWords] = useState([]);
   const [score, setScore] = useState(0);
 
+  const calculateScore = (word) => {
+    if (todaysGame.pangrams.includes(word)) {
+      setScore((prev) => prev + 14);
+    } else if (word.length === 4) {
+      setScore((prev) => prev + 1);
+    } else if (word.length > 4) {
+      setScore((prev) => prev + word.length);
+    }
+  };
+
   const addFoundWord = (word) => {
     setFoundWords((prev) => [...prev, word]);
-    // Calculate and update score
+    calculateScore(word);
   };
 
   useEffect(() => {
