@@ -54,7 +54,6 @@ export default function GameControls() {
     return null;
   };
 
-  // Submit handler
   const submitHandler = (event) => {
     event.preventDefault();
     if (hasErrors) return;
@@ -65,7 +64,7 @@ export default function GameControls() {
     } else {
       addFoundWord(userInput.toLowerCase());
       setMessage("Correct! Well done!");
-      setUserInput(""); // Clear on success
+      setUserInput("");
     }
   };
 

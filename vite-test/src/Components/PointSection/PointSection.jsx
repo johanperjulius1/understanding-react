@@ -1,4 +1,7 @@
 import styles from "./points-section.module.css";
+import { useGame } from "../../hooks/useGame";
+
+const { score } = useGame();
 
 export default function PointSection() {
   return (
